@@ -65,6 +65,9 @@ int main(){
 double** matrizDistanciaAeropuertos(int N){
     //evitamos usar numeros menores a 2
     if(N>1){
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_real_distribution<double> dist(100.0, 1500.0);
         //reservar memoria para la matriz
         double **arr=new double*[N];
 
@@ -75,8 +78,15 @@ double** matrizDistanciaAeropuertos(int N){
         //generar los elementos de la matriz
         for(int i=0; i<N; i++){
             for(int j=0; j<N; j++){
-                if(i!=j) arr[i][j]=i*j;    //asignamos numeros aleatorios
-                else arr[i][j]=0;       //asignamos 0 la distancia de un aeropuerto
+                if(i!=j){
+                    double distancia=dist(gen);
+                    arr[i][j]=distancia;     //asignamos numeros aleatorios
+                    arr[j][i]=distancia;     //mantenemos la simetria de distancias
+                }
+                else {
+                    arr[i][j]=0;       //asignamos 0 la distancia de un aeropuerto
+                    break;      //saltamos a la siguiente fila
+                }
             }                           //con él mismo
         }
 
