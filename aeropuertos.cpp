@@ -99,8 +99,29 @@ double** matrizDistanciaAeropuertos(int N){
 void imprimirMatriz(double **arr, int N){
     cout<<"\n";
     //imprimimos la matriz
+    //encabezado con A[i] que son los aeropuertos
+    cout<<setw(17)<<" ";
     for(int i=0; i<N; i++){
+        //modificacion para mas de 9 aeropuertos
+        if(i<9){
+            cout<<setw(7)<<"A["<<i+1<<"]";
+        }else{
+            cout<<setw(6)<<"A["<<i+1<<"]";
+        }
+    }
+    cout<<"\n\n";
+    //impresion de las filas
+    for(int i=0; i<N; i++){
+        cout<<right;
+        cout<<setw(14)<<"Aeropuerto["<<i+1<<"] :"; //los aeropuertos
+        cout<<left;
         for(int j=0; j<N; j++){
+            //modificacion para mas de 9 aeropuertos
+            if(j==0 && i<9){
+                cout<<"  ";
+            }else if(j==0){
+                cout<<" ";
+            }
             cout<<setw(9)<<arr[i][j];   //agregamos orden con setw()
         }
         cout<<"\n";
