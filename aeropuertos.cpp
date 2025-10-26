@@ -3,6 +3,9 @@
 #include<iomanip>
 using namespace std;
 
+//Autor: Vega Reris, Yenque
+//He usado la libreria random para generar los numeros de tipo double ya que tenia problemas para hacerlo con srand() y rand()
+
 double** matrizDistanciaAeropuertos(int N);     //generar matriz de distancia de aeropuertos
 void imprimirMatriz(double **arr, int N);       //mostrar la matriz de distancias de aeropuertos
 double* promedioDistancias(double **arr, int N);    //generar un arreglo con el promedio de cada aeropuerto
