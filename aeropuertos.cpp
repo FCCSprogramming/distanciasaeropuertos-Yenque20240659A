@@ -1,10 +1,10 @@
 #include<iostream>
-#include<random>
+#include<ctime>
+#include<cstdlib>
 #include<iomanip>
 using namespace std;
 
 //Autor: Vega Reris, Yenque
-//He usado la libreria random para generar los numeros de tipo double ya que tenia problemas para hacerlo con srand() y rand()
 
 double** matrizDistanciaAeropuertos(int N);     //generar matriz de distancia de aeropuertos
 void imprimirMatriz(double **arr, int N);       //mostrar la matriz de distancias de aeropuertos
@@ -68,9 +68,8 @@ int main(){
 double** matrizDistanciaAeropuertos(int N){
     //evitamos usar numeros menores a 2
     if(N>1){
-        random_device rd;
-        mt19937 gen(rd());
-        uniform_real_distribution<double> dist(100.0, 1500.0);
+        //aleatoriedad
+        srand(time(NULL));
         //reservar memoria para la matriz
         double **arr=new double*[N];
 
@@ -82,7 +81,7 @@ double** matrizDistanciaAeropuertos(int N){
         for(int i=0; i<N; i++){
             for(int j=0; j<N; j++){
                 if(i!=j){
-                    double distancia=dist(gen);
+                    double distancia= 100+((double)rand()/RAND_MAX)*1401;
                     arr[i][j]=distancia;     //asignamos numeros aleatorios
                     arr[j][i]=distancia;     //mantenemos la simetria de distancias
                 }
